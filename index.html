@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KSV Associates – GST & Tax Consulting, Kunnamkulam</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+  <!-- Google Fonts: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+
+  <style>
+    /* ============================================================
+       CSS VARIABLES
+       Primary: Red  |  Accent: Gold  |  Base: Dark charcoal
+    ============================================================ */
+    :root {
+      --red:       #B91C1C;
+      --red-dk:    #a30000;
+      --red-md:    #DC2626;
+      --red-lt:    #EF4444;
+      --red-pale:  #FEF2F2;
+      --gold:      #D97706;
+      --gold-lt:   #F59E0B;
+      --gold-pale: #FFFBEB;
+      --dark:      #1C1917;
+      --dark-soft: #292524;
+      --muted:     #78716C;
+      --border:    #E7E5E4;
+      --white:     #FFFFFF;
+      --off-white: #FBF8F8;
+      --radius:    14px;
+      --shadow:    0 4px 24px rgba(185,28,28,.09);
+      --shadow-h:  0 12px 40px rgba(185,28,28,.18);
+      --tr:        .3s cubic-bezier(.4,0,.2,1);
+    }
+
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body {
+      font-family:'Poppins',sans-serif;
+      color:var(--dark);
+      background:var(--white);
+      overflow-x:hidden;
+    }
+
+    /* ── Typography helpers ── */
+    .section-label {
+      display:inline-block;
+      font-size:.7rem; font-weight:700;
+      letter-spacing:.18em; text-transform:uppercase;
+      color:var(--red-md);
+      background:var(--red-pale);
+      border:1px solid rgba(185,28,28,.15);
+      padding:.28rem .95rem; border-radius:50px;
+      margin-bottom:1rem;
+    }
+    .section-title {
+      font-size:clamp(1.7rem,3vw,2.4rem);
+      font-weight:800; color:var(--dark); line-height:1.2;
+    }
+    .section-sub {
+      font-size:.97rem; color:var(--muted);
+      line-height:1.78; max-width:520px;
+    }
+
+    /* ============================================================
+       NAVBAR  – deep red
+    ============================================================ */
+
+    .logo-img {
+  height: 50px; /* adjust as needed */
+  width: auto;
+  object-fit: contain;
+}
+    #mainNav {
+      background:var(--red-dk);
+      padding:.85rem 0;
+      position:sticky; top:0; z-index:1030;
+      transition:background var(--tr), box-shadow var(--tr);
+    }
+    #mainNav.scrolled { box-shadow:0 4px 28px rgba(0,0,0,.28); }
+
+    .navbar-brand-wrap { display:flex; align-items:center; gap:.7rem; }
+    .brand-icon {
+      width:42px; height:42px; background:var(--gold-lt);
+      border-radius:10px;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .brand-icon i { font-size:1.2rem; color:var(--red-dk); }
+    .brand-name    { font-size:1.22rem; font-weight:800; color:#fff; letter-spacing:.02em; }
+    .brand-tagline { font-size:.6rem; color:rgba(255,255,255,.6); letter-spacing:.1em;
+                     text-transform:uppercase; line-height:1; display:block; margin-top:1px; }
+
+    .navbar-nav .nav-link {
+      color:rgba(255,255,255,.82) !important;
+      font-size:.88rem; font-weight:500;
+      padding:.4rem .85rem !important; border-radius:7px;
+      transition:background var(--tr), color var(--tr);
+    }
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color:#fff !important; background:rgba(255,255,255,.13);
+    }
+    .btn-nav-cta {
+      background:var(--gold-lt) !important; color:var(--red-dk) !important;
+      font-weight:700 !important; border-radius:8px !important;
+      padding:.42rem 1.15rem !important;
+      transition:background var(--tr) !important;
+    }
+    .btn-nav-cta:hover { background:var(--gold) !important; }
+    .navbar-toggler { border:none; }
+    .navbar-toggler-icon { filter:brightness(10); }
+
+    /* ============================================================
+       HERO  – img tag for background, NOT CSS background-image
+    ============================================================ */
+    #hero {
+      position:relative; min-height:92vh;
+      display:flex; align-items:center; overflow:hidden;
+    }
+    /* Background photo sits behind everything */
+    #hero .hero-bg-img {
+      position:absolute; inset:0;
+      width:100%; height:100%; object-fit:cover; z-index:0;
+    }
+    /* Dominant red gradient overlay */
+    #hero .hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    130deg,
+    rgba(127, 29, 29, 0.65) 0%,
+    rgba(185, 28, 28, 0.50) 55%,
+    rgba(220, 38, 38, 0.35) 100%
+  );
+}
+    /* Subtle dot pattern */
+    #hero .hero-pattern {
+      position:absolute; inset:0; z-index:2;
+      background-image:radial-gradient(rgba(255,255,255,.055) 1px, transparent 1px);
+      background-size:28px 28px;
+    }
+    #hero .hero-content { position:relative; z-index:3; }
+
+    .hero-badge {
+      display:inline-flex; align-items:center; gap:.5rem;
+      background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.22);
+      border-radius:50px; padding:.35rem 1rem;
+      font-size:.78rem; color:#fcd34d; font-weight:600;
+      letter-spacing:.06em; text-transform:uppercase; margin-bottom:1.4rem;
+    }
+    .hero-title {
+      font-size:clamp(2rem,5vw,3.4rem); font-weight:900;
+      color:#fff; line-height:1.15; margin-bottom:1.2rem;
+    }
+    .hero-title span { color:var(--gold-lt); }
+    .hero-sub {
+      font-size:1.07rem; color:rgba(255,255,255,.82);
+      line-height:1.75; margin-bottom:2rem; max-width:520px;
+    }
+    .btn-hero-primary {
+      background:var(--gold-lt); color:var(--red-dk);
+      font-weight:700; padding:.8rem 2rem;
+      border-radius:10px; border:none; font-size:.97rem;
+      text-decoration:none;
+      display:inline-flex; align-items:center; gap:.5rem;
+      transition:transform var(--tr), box-shadow var(--tr), background var(--tr);
+    }
+    .btn-hero-primary:hover {
+      background:#fcd34d; color:var(--red-dk);
+      transform:translateY(-2px);
+      box-shadow:0 8px 28px rgba(217,119,6,.45);
+    }
+    .btn-hero-outline {
+      border:2px solid rgba(255,255,255,.5); color:#fff;
+      font-weight:600; padding:.78rem 1.8rem;
+      border-radius:10px; text-decoration:none; font-size:.97rem;
+      display:inline-flex; align-items:center; gap:.5rem;
+      transition:border-color var(--tr), background var(--tr);
+    }
+    .btn-hero-outline:hover { border-color:#fff; background:rgba(255,255,255,.1); color:#fff; }
+
+    .hero-float-card {
+      background:rgba(255,255,255,.11); backdrop-filter:blur(14px);
+      border:1px solid rgba(255,255,255,.2); border-radius:14px;
+      padding:1rem 1.4rem; color:#fff;
+      display:flex; align-items:center; gap:.8rem; margin-bottom:.8rem;
+    }
+    .hero-float-card .icon-wrap {
+      width:44px; height:44px; border-radius:10px;
+      display:flex; align-items:center; justify-content:center;
+      font-size:1.15rem; flex-shrink:0;
+    }
+    .hero-float-card .card-stat  { font-size:1.4rem; font-weight:800; line-height:1; }
+    .hero-float-card .card-label { font-size:.72rem; opacity:.75; text-transform:uppercase; letter-spacing:.06em; }
+
+    /* ============================================================
+       ABOUT
+    ============================================================ */
+    #about { padding:6rem 0; background:var(--off-white); }
+    .about-img-wrap { position:relative; border-radius:var(--radius); overflow:hidden; }
+    .about-img-wrap img {
+      width:100%; height:730px; object-fit:cover;
+      border-radius:var(--radius); display:block;
+    }
+    .about-img-badge {
+      position:absolute; bottom:1.5rem; left:1.5rem;
+      background:var(--red-md); color:#fff;
+      border-radius:10px; padding:.9rem 1.3rem;
+      font-weight:800; font-size:1.05rem;
+    }
+    .about-img-badge span { display:block; font-size:.7rem; font-weight:400; opacity:.85; }
+
+    .check-item { display:flex; align-items:flex-start; gap:.75rem; margin-bottom:.9rem; }
+    .check-item .icon {
+      width:30px; height:30px; background:var(--red-pale); border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      color:var(--red-md); font-size:.78rem; flex-shrink:0; margin-top:.1rem;
+    }
+    .check-item strong { font-weight:700; font-size:.95rem; color:var(--dark); }
+    .check-item p      { font-size:.83rem; color:var(--muted); margin:0; }
+
+    .stat-pill {
+      background:var(--white); border-radius:12px;
+      padding:1rem 1.3rem; box-shadow:var(--shadow);
+      text-align:center; border-top:3px solid var(--red-md);
+    }
+    .stat-pill .num { font-size:1.7rem; font-weight:800; color:var(--red-md); line-height:1; }
+    .stat-pill .lbl { font-size:.72rem; color:var(--muted); text-transform:uppercase; letter-spacing:.07em; margin-top:.25rem; }
+
+    /* ============================================================
+       SERVICES
+    ============================================================ */
+    #services { padding:6rem 0; background:var(--white); }
+    .service-card {
+      background:var(--white); border-radius:var(--radius);
+      padding:2rem 1.7rem; box-shadow:var(--shadow);
+      border:1px solid var(--border); height:100%;
+      transition:transform var(--tr), box-shadow var(--tr), border-color var(--tr);
+      position:relative; overflow:hidden;
+    }
+    .service-card::before {
+      content:''; position:absolute; top:0; left:0; right:0;
+      height:4px; background:linear-gradient(90deg,var(--red-dk),var(--red-lt));
+      opacity:0; transition:opacity var(--tr);
+    }
+    .service-card:hover { transform:translateY(-6px); box-shadow:var(--shadow-h); border-color:transparent; }
+    .service-card:hover::before { opacity:1; }
+    .service-icon {
+      width:58px; height:58px; border-radius:13px;
+      display:flex; align-items:center; justify-content:center;
+      font-size:1.45rem; margin-bottom:1.3rem;
+    }
+    .si-red  { background:var(--red-pale);  color:var(--red-md); }
+    .si-gold { background:var(--gold-pale); color:var(--gold);   }
+    .si-dark { background:#F5F5F4; color:var(--dark-soft); }
+    .si-grn  { background:#ECFDF5; color:#059669; }
+    .service-card h5 { font-size:1.05rem; font-weight:700; color:var(--dark); margin-bottom:.6rem; }
+    .service-card p  { font-size:.86rem; color:var(--muted); line-height:1.72; margin:0; }
+    .service-arrow {
+      display:inline-flex; align-items:center; gap:.35rem;
+      font-size:.8rem; font-weight:600; color:var(--red-md);
+      text-decoration:none; margin-top:1rem;
+      transition:gap var(--tr);
+    }
+    .service-arrow:hover { gap:.6rem; color:var(--red-dk); }
+
+    /* ============================================================
+       STATS BANNER  – red gradient
+    ============================================================ */
+    #stats {
+      background:linear-gradient(130deg,var(--red-dk) 0%,var(--red-md) 60%,var(--red-lt) 100%);
+      padding:5rem 0; position:relative; overflow:hidden;
+    }
+    #stats::after {
+      content:''; position:absolute; top:-70px; right:-70px;
+      width:320px; height:320px; border-radius:50%;
+      background:rgba(255,255,255,.05);
+    }
+    #stats::before {
+      content:''; position:absolute; bottom:-50px; left:-50px;
+      width:240px; height:240px; border-radius:50%;
+      background:rgba(255,255,255,.04);
+    }
+    .stat-block { text-align:center; padding:1.2rem; }
+    .stat-block .number     { font-size:clamp(2.2rem,4vw,3rem); font-weight:900; color:#fff; line-height:1; }
+    .stat-block .number sub { font-size:1.8rem; }
+    .stat-block .sup-label  { font-size:.78rem; color:rgba(255,255,255,.65); text-transform:uppercase; letter-spacing:.12em; margin-top:.5rem; }
+    .stat-divider { border-right:1px solid rgba(255,255,255,.18); }
+
+    /* ============================================================
+       VIDEO / HIGHLIGHT
+    ============================================================ */
+    #video-section { padding:6rem 0; background:var(--off-white); }
+    .video-thumb {
+      position:relative; border-radius:var(--radius);
+      overflow:hidden; cursor:pointer; box-shadow:var(--shadow-h);
+    }
+    .video-thumb img { width:100%; height:360px; object-fit:cover; display:block; }
+    .video-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(135deg,rgba(127,29,29,.72),rgba(185,28,28,.55));
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+    }
+    .play-btn {
+      width:76px; height:76px; background:#fff; border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      box-shadow:0 8px 32px rgba(0,0,0,.3); margin-bottom:1rem;
+      transition:transform var(--tr), box-shadow var(--tr);
+    }
+    .play-btn i { font-size:1.8rem; color:var(--red-md); margin-left:5px; }
+    .video-thumb:hover .play-btn { transform:scale(1.1); box-shadow:0 12px 40px rgba(0,0,0,.4); }
+    .video-overlay p { color:#fff; font-weight:600; font-size:1.1rem; letter-spacing:.03em; }
+    .video-point { display:flex; align-items:flex-start; gap:.75rem; margin-bottom:1.1rem; }
+    .video-point .dot {
+      width:36px; height:36px; border-radius:9px; flex-shrink:0;
+      display:flex; align-items:center; justify-content:center; font-size:.85rem;
+    }
+
+    /* ============================================================
+       BLOG
+    ============================================================ */
+    #blog { padding:6rem 0; background:var(--white); }
+    .blog-card {
+      border-radius:var(--radius); overflow:hidden;
+      box-shadow:var(--shadow); border:1px solid var(--border);
+      height:100%;
+      transition:transform var(--tr), box-shadow var(--tr);
+    }
+    .blog-card:hover { transform:translateY(-5px); box-shadow:var(--shadow-h); }
+    .blog-img-wrap { overflow:hidden; }
+    .blog-img-wrap img { width:100%; height:200px; object-fit:cover; display:block; transition:transform .5s ease; }
+    .blog-card:hover .blog-img-wrap img { transform:scale(1.05); }
+    .blog-body { padding:1.5rem; }
+    .blog-cat {
+      font-size:.7rem; font-weight:700; text-transform:uppercase;
+      letter-spacing:.1em; color:var(--red-md);
+      background:var(--red-pale); padding:.2rem .75rem;
+      border-radius:50px; display:inline-block; margin-bottom:.7rem;
+    }
+    .blog-card h5 { font-size:1.02rem; font-weight:700; color:var(--dark); margin-bottom:.5rem; line-height:1.42; }
+    .blog-card p  { font-size:.84rem; color:var(--muted); line-height:1.65; margin:0 0 1rem; }
+    .blog-meta { font-size:.76rem; color:var(--muted); display:flex; align-items:center; gap:.4rem; }
+    .blog-read {
+      font-size:.82rem; font-weight:600; color:var(--red-md);
+      text-decoration:none; display:inline-flex; align-items:center; gap:.3rem;
+      transition:gap var(--tr);
+    }
+    .blog-read:hover { gap:.55rem; color:var(--red-dk); }
+
+    /* ============================================================
+       FAQ
+    ============================================================ */
+    #faq { padding:6rem 0; background:var(--off-white); }
+    .accordion-item {
+      border:1px solid var(--border) !important;
+      border-radius:var(--radius) !important;
+      margin-bottom:.8rem; overflow:hidden;
+    }
+    .accordion-button {
+      font-weight:600; font-size:.95rem;
+      color:var(--dark) !important;
+      background:var(--white) !important;
+      padding:1.15rem 1.4rem;
+    }
+    .accordion-button:not(.collapsed) {
+      background:var(--red-pale) !important;
+      color:var(--red-md) !important;
+      box-shadow:none !important;
+    }
+    .accordion-body { font-size:.9rem; color:var(--muted); line-height:1.78; background:var(--white); }
+
+    /* ============================================================
+       CONTACT
+    ============================================================ */
+    #contact { padding:6rem 0; background:var(--white); }
+    .contact-info-item { display:flex; align-items:flex-start; gap:1rem; margin-bottom:1.5rem; }
+    .contact-icon {
+      width:48px; height:48px; border-radius:12px;
+      display:flex; align-items:center; justify-content:center;
+      font-size:1.1rem; flex-shrink:0;
+    }
+    .contact-info-item h6 { font-weight:700; color:var(--dark); font-size:.88rem; margin-bottom:.25rem; }
+    .contact-info-item p  { font-size:.86rem; color:var(--muted); margin:0; line-height:1.5; }
+    .contact-form-wrap {
+      background:var(--off-white); border-radius:var(--radius);
+      padding:2.2rem; border:1px solid var(--border);
+    }
+    .form-label { font-size:.84rem; font-weight:600; color:var(--dark); }
+    .form-control, .form-select {
+      border-radius:9px; border:1.5px solid var(--border);
+      font-size:.9rem; padding:.65rem 1rem;
+      transition:border-color var(--tr), box-shadow var(--tr);
+    }
+    .form-control:focus, .form-select:focus {
+      border-color:var(--red-md);
+      box-shadow:0 0 0 3px rgba(185,28,28,.1);
+    }
+    .btn-submit {
+      background:linear-gradient(135deg,var(--red-dk) 0%,var(--red-md) 100%);
+      color:#fff; border:none; border-radius:10px;
+      font-weight:700; padding:.78rem 2rem;
+      font-size:.95rem; width:100%;
+      transition:transform var(--tr), box-shadow var(--tr);
+    }
+    .btn-submit:hover {
+      transform:translateY(-2px);
+      box-shadow:0 8px 24px rgba(185,28,28,.38);
+      color:#fff;
+    }
+
+    /* ============================================================
+       FOOTER  – dark charcoal, red accents
+    ============================================================ */
+    footer { background:var(--dark); padding:4rem 0 0; }
+    .footer-desc { font-size:.86rem; color:rgba(255,255,255,.58); line-height:1.78; max-width:270px; }
+    .footer-heading { font-size:.76rem; font-weight:700; text-transform:uppercase;
+                      letter-spacing:.13em; color:var(--gold-lt); margin-bottom:1.2rem; }
+    .footer-links { list-style:none; padding:0; margin:0; }
+    .footer-links li { margin-bottom:.6rem; }
+    .footer-links a {
+      font-size:.87rem; color:rgba(255,255,255,.62); text-decoration:none;
+      transition:color var(--tr), padding-left var(--tr); display:inline-block;
+    }
+    .footer-links a:hover { color:var(--gold-lt); padding-left:4px; }
+    .social-icon {
+      width:38px; height:38px; border-radius:9px;
+      border:1px solid rgba(255,255,255,.18);
+      display:inline-flex; align-items:center; justify-content:center;
+      color:rgba(255,255,255,.62); text-decoration:none; font-size:.88rem;
+      transition:background var(--tr), color var(--tr), border-color var(--tr);
+    }
+    .social-icon:hover { background:var(--red-md); color:#fff; border-color:var(--red-md); }
+    .footer-bottom {
+      border-top:1px solid rgba(255,255,255,.08);
+      margin-top:3rem; padding:1.3rem 0;
+    }
+    .footer-bottom p { font-size:.78rem; color:rgba(255,255,255,.38); margin:0; }
+
+    /* ── Back to top ── */
+    #backTop {
+      position:fixed; bottom:1.5rem; right:1.5rem; z-index:999;
+      width:44px; height:44px; background:var(--red-md); border-radius:50%;
+      display:none; align-items:center; justify-content:center;
+      color:#fff; text-decoration:none; font-size:1rem;
+      box-shadow:0 4px 16px rgba(185,28,28,.45);
+      transition:transform var(--tr);
+    }
+    #backTop:hover { transform:translateY(-3px); color:#fff; }
+    #backTop.show  { display:flex; }
+
+    /* ── Utility button ── */
+    .btn-primary-red {
+      background:var(--red-md); color:#fff; border:none;
+      border-radius:9px; font-weight:600;
+      padding:.65rem 1.5rem; font-size:.9rem; text-decoration:none;
+      display:inline-block;
+      transition:background var(--tr), transform var(--tr);
+    }
+    .btn-primary-red:hover { background:var(--red-dk); color:#fff; transform:translateY(-2px); }
+
+    /* ── Responsive ── */
+    @media (max-width:767px) {
+      #hero { min-height:80vh; }
+      .stat-divider { border-right:none; border-bottom:1px solid rgba(255,255,255,.15); }
+    }
+  </style>
+</head>
+<body>
+    <!-- WhatsApp Floating Button -->
+<a href="https://wa.me/919048584814" 
+   class="whatsapp-float" 
+   target="_blank">
+  💬
+</a>
+
+<style>
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 55px;
+  height: 55px;
+  background-color: #25D366;
+  color: white;
+  font-size: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  z-index: 999;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+</style>
+
+<!-- ============================================================
+     NAVBAR
+============================================================ -->
+<nav id="mainNav" class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand p-0" href="#hero">
+  <img src="images/logo.png" alt="KSV Associates Logo" class="logo-img">
+</a>
+    <button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="#blog">Insights</a></li>
+        <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+        <li class="nav-item ms-lg-2">
+          <a class="nav-link btn-nav-cta" href="#contact">Get Consultation</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ============================================================
+     HERO SECTION
+     ► Background image: images/hero-bg.jpg
+       (falls back to Unsplash if file not found)
+============================================================ -->
+<section id="hero">
+
+  <!-- BACKGROUND PHOTO – place your file at  images/hero-bg.jpg -->
+  <img
+    src="images/hero-bg.jpg"
+    alt="Finance and accounting office background"
+    class="hero-bg-img"
+    onerror="this.src='https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1600&q=80'"
+  />
+
+  <!-- Red dominant gradient overlay -->
+  <div class="hero-overlay"></div>
+  <!-- Subtle dot texture -->
+  <div class="hero-pattern"></div>
+
+  <!-- Page content -->
+  <div class="container hero-content py-5">
+    <div class="row align-items-center">
+
+      <!-- Left: copy -->
+      <div class="col-lg-7 col-xl-6 py-4">
+        <div class="hero-badge">
+          <i class="fa-solid fa-star" style="color:#fcd34d;font-size:.72rem;"></i>
+          Trusted by 100+ Businesses in Kerala
+        </div>
+        <h1 class="hero-title">
+          Accounting &amp; <span>GST Solutions</span><br/>for Your Business
+        </h1>
+        <p class="hero-sub">
+          KSV Associates helps businesses in Thrissur and across Kerala stay compliant,
+          save on taxes, and grow with confidence. From GST filing to complete accounting —
+          we've got you covered.
+        </p>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="#contact" class="btn-hero-primary">
+            <i class="fa-solid fa-calendar-check"></i> Get Consultation
+          </a>
+          <a href="#services" class="btn-hero-outline">
+            <i class="fa-solid fa-briefcase"></i> Our Services
+          </a>
+        </div>
+        <div class="mt-4 d-flex flex-wrap gap-3"
+             style="font-size:.8rem;color:rgba(255,255,255,.72);">
+          <span><i class="fa-solid fa-circle-check" style="color:#fcd34d;margin-right:.3rem;"></i>GST Registered</span>
+          <span><i class="fa-solid fa-circle-check" style="color:#fcd34d;margin-right:.3rem;"></i>5+ Years Experience</span>
+          <span><i class="fa-solid fa-circle-check" style="color:#fcd34d;margin-right:.3rem;"></i>Kerala &amp; Pan India</span>
+        </div>
+      </div>
+
+      <!-- Right: floating stat cards -->
+      <div class="col-lg-5 d-none d-lg-block">
+        <div class="ms-lg-4">
+          <div class="hero-float-card">
+            <div class="icon-wrap" style="background:rgba(253,211,77,.15);">
+              <i class="fa-solid fa-file-invoice-dollar" style="color:#fcd34d;"></i>
+            </div>
+            <div>
+              <div class="card-stat">500+</div>
+              <div class="card-label">GST Filings Completed</div>
+            </div>
+          </div>
+          <div class="hero-float-card">
+            <div class="icon-wrap" style="background:rgba(255,255,255,.14);">
+              <i class="fa-solid fa-users" style="color:#fff;"></i>
+            </div>
+            <div>
+              <div class="card-stat">100+</div>
+              <div class="card-label">Happy Clients</div>
+            </div>
+          </div>
+          <div class="hero-float-card">
+            <div class="icon-wrap" style="background:rgba(255,255,255,.1);">
+              <i class="fa-solid fa-award" style="color:#fca5a5;"></i>
+            </div>
+            <div>
+              <div class="card-stat">5+ Yrs</div>
+              <div class="card-label">Industry Experience</div>
+            </div>
+          </div>
+          <p class="text-center mt-2"
+             style="font-size:.74rem;color:rgba(255,255,255,.38);">
+            <i class="fa-solid fa-lock me-1"></i>Your data is always secure with us
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     ABOUT SECTION
+     ► About image: images/about.jpg
+============================================================ -->
+<section id="about">
+  <div class="container">
+    <div class="row align-items-center g-5">
+
+      <!-- Image -->
+      <div class="col-lg-5">
+        <div class="about-img-wrap">
+          <!-- Place your file at  images/about.jpg -->
+          <img
+            src="images/about.png"
+            alt="KSV Associates office and consulting team"
+            onerror="this.src='https://images.unsplash.com/photo-1573497491208-6b1acb260507?w=800&q=80'"
+          />
+          <div class="about-img-badge">
+            5+ Years <span>of Trust &amp; Expertise</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="col-lg-7">
+        <span class="section-label">About Us</span>
+        <h2 class="section-title mb-3">
+          Your Trusted GST &amp;<br/>Tax Partner in Kerala
+        </h2>
+        <p class="section-sub mb-4">
+          KSV Associates is a premier GST and taxation consulting firm based in
+          Kunnamkulam, Kerala. We combine deep regulatory knowledge with personalised
+          service to help businesses of all sizes navigate India's complex tax landscape
+          — efficiently and confidently.
+        </p>
+
+        <div class="mb-4">
+          <div class="check-item">
+            <div class="icon"><i class="fa-solid fa-check"></i></div>
+            <div>
+              <strong>GST Filing Experts</strong>
+              <p>Accurate, timely GSTR-1, GSTR-3B, annual returns and reconciliation for all business types.</p>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="icon"><i class="fa-solid fa-check"></i></div>
+            <div>
+              <strong>Income Tax Consulting</strong>
+              <p>Strategic tax planning, ITR filing, and advisory to minimise your tax liability legally.</p>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="icon"><i class="fa-solid fa-check"></i></div>
+            <div>
+              <strong>Business Compliance</strong>
+              <p>End-to-end compliance including ROC filings, TDS, and regulatory adherence.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-3">
+          <div class="col-6 col-sm-3">
+            <div class="stat-pill"><div class="num">100+</div><div class="lbl">Clients</div></div>
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="stat-pill"><div class="num">500+</div><div class="lbl">Filings</div></div>
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="stat-pill"><div class="num">5+</div><div class="lbl">Yrs Exp.</div></div>
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="stat-pill"><div class="num">24/7</div><div class="lbl">Support</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SERVICES SECTION
+============================================================ -->
+<section id="services">
+  <div class="container">
+    <div class="text-center mb-5">
+      <span class="section-label">What We Offer</span>
+      <h2 class="section-title">Tailored Financial Solutions</h2>
+      <p class="section-sub mx-auto mt-2">
+        Comprehensive tax and accounting services designed to keep your business
+        compliant, efficient, and growing.
+      </p>
+    </div>
+
+    <div class="row g-4">
+  <!-- GST Filing -->
+  <div class="col-md-6 col-lg-3">
+    <div class="service-card">
+      <div class="service-icon bg-red"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+      <h5>GST Filing &amp; Returns</h5>
+      <p>Timely and accurate filing of all GST returns — GSTR-1, GSTR-3B, GSTR-9 — with reconciliation and error-free compliance.</p>
+      <a href="#contact" class="service-arrow">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+
+  <!-- Income Tax -->
+  <div class="col-md-6 col-lg-3">
+    <div class="service-card">
+      <div class="service-icon bg-blue"><i class="fa-solid fa-landmark"></i></div>
+      <h5>Income Tax Services</h5>
+      <p>Expert ITR filing for individuals, firms, and companies. Tax planning strategies to maximise savings within legal bounds.</p>
+      <a href="#contact" class="service-arrow">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+
+  <!-- Accounting -->
+  <div class="col-md-6 col-lg-3">
+    <div class="service-card">
+      <div class="service-icon bg-gold"><i class="fa-solid fa-book-open"></i></div>
+      <h5>Accounting &amp; Bookkeeping</h5>
+      <p>Systematic bookkeeping, ledger maintenance, financial statements, and MIS reports to give you clear financial visibility.</p>
+      <a href="#contact" class="service-arrow">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+
+  <!-- Business Registration -->
+  <div class="col-md-6 col-lg-3">
+    <div class="service-card">
+      <div class="service-icon bg-green"><i class="fa-solid fa-registered"></i></div>
+      <h5>Business Registration</h5>
+      <p>Hassle-free company formation, GST registration, MSME, trade licence, and all startup compliance under one roof.</p>
+      <a href="#contact" class="service-arrow">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- Second Row -->
+<div class="row g-4 mt-0">
+  <!-- TDS -->
+  <div class="col-md-6 col-lg-3">
+    <div class="service-card">
+      <div class="service-icon bg-blue"><i class="fa-solid fa-percent"></i></div>
+      <h5>TDS &amp; TCS Compliance</h5>
+      <p>Complete TDS deduction, deposit, and filing services to keep you fully compliant with Income Tax Act provisions.</p>
+      <a href="#contact" class="service-arrow">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+
+  <!-- Financial Advisory -->
+  <div class="col-md-6 col-lg-3">
+    <div class="service-card">
+      <div class="service-icon bg-red"><i class="fa-solid fa-chart-line"></i></div>
+      <h5>Financial Advisory</h5>
+      <p>Strategic financial planning, investment guidance, and profitability analysis tailored to your business goals.</p>
+      <a href="#contact" class="service-arrow">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+
+  <!-- GST Audit -->
+  <div class="col-md-6 col-lg-3">
+    <div class="service-card">
+      <div class="service-icon bg-gold"><i class="fa-solid fa-shield-halved"></i></div>
+      <h5>GST Audit &amp; Notice Handling</h5>
+      <p>Professional representation, audit support, and expert response management for all GST notices and scrutiny cases.</p>
+      <a href="#contact" class="service-arrow">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+
+  <!-- NEW SERVICE (to balance 4th card) -->
+  <div class="col-md-6 col-lg-3">
+    <div class="service-card">
+      <div class="service-icon bg-green"><i class="fa-solid fa-briefcase"></i></div>
+      <h5>Product Report</h5>
+      <p>Complete product reporting including sales analysis, inventory tracking, performance insights, and structured reports to support better business decisions.</p>
+      <a href="#contact" class="service-arrow">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<!-- ============================================================
+     STATS BANNER  – bold red gradient
+============================================================ -->
+<section id="stats">
+  <div class="container">
+    <div class="row g-0 text-center">
+      <div class="col-6 col-md-3 stat-divider">
+        <div class="stat-block">
+          <div class="number">100<sub>+</sub></div>
+          <div class="sup-label">Happy Clients</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3 stat-divider">
+        <div class="stat-block">
+          <div class="number">500<sub>+</sub></div>
+          <div class="sup-label">Filings Done</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3 stat-divider">
+        <div class="stat-block">
+          <div class="number">5<sub>+</sub></div>
+          <div class="sup-label">Years Experience</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat-block">
+          <div class="number" style="font-size:2rem;">24/7</div>
+          <div class="sup-label">Client Support</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     VIDEO / HIGHLIGHT SECTION
+     ► Thumbnail image: images/video-thumb.jpg
+============================================================ -->
+<section id="video-section">
+  <div class="container">
+    <div class="row align-items-center g-5">
+
+      <!-- Video thumbnail -->
+      <div class="col-lg-6">
+        <div class="video-thumb"
+             onclick="alert('Video coming soon! Call us at +91 98765 43210')">
+          <!-- Place your thumbnail at  images/video-thumb.jpg -->
+          <img
+            src="images/video-thumb.jpg"
+            alt="KSV Associates taxation explainer video thumbnail"
+            onerror="this.src='https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=900&q=80'"
+          />
+          <div class="video-overlay">
+            <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+            <p>Watch: How We Help Your Business</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div class="col-lg-6">
+        <span class="section-label">Why KSV Associates</span>
+        <h2 class="section-title mb-3">
+          Simplifying Taxation<br/>for Businesses
+        </h2>
+        <p class="section-sub mb-4">
+          We take the complexity out of GST, income tax, and compliance so you can focus
+          entirely on growing your business. Our proactive approach means no last-minute surprises.
+        </p>
+
+        <div class="video-point">
+          <div class="dot" style="background:var(--red-pale);color:var(--red-md);">
+            <i class="fa-solid fa-bolt"></i>
+          </div>
+          <div>
+            <strong style="font-size:.95rem;font-weight:700;color:var(--dark);">Fast Turnaround</strong>
+            <p style="font-size:.84rem;color:var(--muted);margin:0;">All filings completed ahead of deadlines, avoiding penalties.</p>
+          </div>
+        </div>
+        <div class="video-point">
+          <div class="dot" style="background:#F5F5F4;color:var(--dark-soft);">
+            <i class="fa-solid fa-user-tie"></i>
+          </div>
+          <div>
+            <strong style="font-size:.95rem;font-weight:700;color:var(--dark);">Expert Team</strong>
+            <p style="font-size:.84rem;color:var(--muted);margin:0;">Qualified professionals with deep knowledge of GST and income tax law.</p>
+          </div>
+        </div>
+        <div class="video-point">
+          <div class="dot" style="background:var(--gold-pale);color:var(--gold);">
+            <i class="fa-solid fa-headset"></i>
+          </div>
+          <div>
+            <strong style="font-size:.95rem;font-weight:700;color:var(--dark);">Dedicated Support</strong>
+            <p style="font-size:.84rem;color:var(--muted);margin:0;">A personal account manager for every client — just a call away.</p>
+          </div>
+        </div>
+
+        <a href="#contact" class="btn-primary-red mt-2">
+          <i class="fa-solid fa-phone-volume me-2"></i>Talk to an Expert
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     BLOG / INSIGHTS SECTION
+     ► Blog images: images/blog-1.jpg  images/blog-2.jpg  images/blog-3.jpg
+============================================================ -->
+<section id="blog">
+  <div class="container">
+    <div class="d-flex flex-wrap justify-content-between align-items-end mb-5 gap-3">
+      <div>
+        <span class="section-label">Knowledge Hub</span>
+        <h2 class="section-title">Latest Financial Insights</h2>
+      </div>
+      <a href="#blog" class="btn-primary-red">View All Posts</a>
+    </div>
+
+    <div class="row g-4">
+
+      <!-- Blog Post 1 — place image at images/blog-1.jpg -->
+      <div class="col-md-4">
+        <div class="blog-card">
+          <div class="blog-img-wrap">
+            <img
+              src="images/blog-1.jpg"
+              alt="GST Compliance Tips article cover"
+              onerror="this.src='https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=600&q=80'"
+            />
+          </div>
+          <div class="blog-body">
+            <span class="blog-cat">GST Tips</span>
+            <h5>Top 10 GST Compliance Tips Every Business Must Follow in 2024</h5>
+            <p>Avoid penalties and stay compliant with these essential best practices for small and medium enterprises.</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="blog-meta"><i class="fa-regular fa-calendar"></i> Dec 15, 2024</div>
+              <a href="#blog" class="blog-read">Read More <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blog Post 2 — place image at images/blog-2.jpg -->
+      <div class="col-md-4">
+        <div class="blog-card">
+          <div class="blog-img-wrap">
+            <img
+              src="images/blog-2.jpg"
+              alt="Tax Saving Strategies article cover"
+              onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80'"
+            />
+          </div>
+          <div class="blog-body">
+            <span class="blog-cat">Tax Planning</span>
+            <h5>Smart Tax Saving Strategies for FY 2024–25 You Shouldn't Miss</h5>
+            <p>Discover legal deductions, exemptions, and investment options that significantly reduce your tax liability.</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="blog-meta"><i class="fa-regular fa-calendar"></i> Nov 28, 2024</div>
+              <a href="#blog" class="blog-read">Read More <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blog Post 3 — place image at images/blog-3.jpg -->
+      <div class="col-md-4">
+        <div class="blog-card">
+          <div class="blog-img-wrap">
+            <img
+              src="images/blog-3.jpg"
+              alt="Business Compliance Guide article cover"
+              onerror="this.src='https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&q=80'"
+            />
+          </div>
+          <div class="blog-body">
+            <span class="blog-cat">Compliance</span>
+            <h5>The Complete Business Compliance Guide for Startups in Kerala</h5>
+            <p>A step-by-step compliance roadmap every new business owner in Kerala needs — from GST to annual filings.</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="blog-meta"><i class="fa-regular fa-calendar"></i> Oct 10, 2024</div>
+              <a href="#blog" class="blog-read">Read More <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FAQ SECTION
+============================================================ -->
+<section id="faq">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center mb-5">
+        <span class="section-label">Common Questions</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-sub mx-auto mt-2">
+          Everything you need to know about our services. Can't find your answer?
+          Feel free to contact us directly.
+        </p>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="accordion" id="faqAccordion">
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button"
+                      data-bs-toggle="collapse" data-bs-target="#faq1">
+                <i class="fa-solid fa-file-text me-3"
+                   style="color:var(--red-md);font-size:.9rem;"></i>
+                What documents are required for GST registration?
+              </button>
+            </h2>
+            <div id="faq1" class="accordion-collapse collapse show"
+                 data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                For GST registration you'll typically need: PAN card of the business owner / directors,
+                Aadhaar card, proof of business address (electricity bill, rent agreement), bank account
+                details (cancelled cheque), passport-sized photograph, and certificate of incorporation
+                (for companies). We guide you through the entire process.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button"
+                      data-bs-toggle="collapse" data-bs-target="#faq2">
+                <i class="fa-solid fa-clock me-3"
+                   style="color:var(--gold);font-size:.9rem;"></i>
+                How long does GST filing take?
+              </button>
+            </h2>
+            <div id="faq2" class="accordion-collapse collapse"
+                 data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Routine GST return filing (GSTR-1 and GSTR-3B) typically takes 1–3 business days
+                once we receive all invoices and purchase data. For annual returns (GSTR-9) the process
+                may take 5–7 days. We always complete filings well before the due date to avoid penalties.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button"
+                      data-bs-toggle="collapse" data-bs-target="#faq3">
+                <i class="fa-solid fa-building me-3"
+                   style="color:var(--red-md);font-size:.9rem;"></i>
+                Do you assist with business registration?
+              </button>
+            </h2>
+            <div id="faq3" class="accordion-collapse collapse"
+                 data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Yes! We offer complete business registration services including sole proprietorship,
+                partnership firm, Private Limited Company (Pvt. Ltd.), LLP, One Person Company (OPC),
+                MSME/Udyam registration, GST registration, trade licence, and IEC. We handle the
+                entire process end-to-end.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button"
+                      data-bs-toggle="collapse" data-bs-target="#faq4">
+                <i class="fa-solid fa-indian-rupee-sign me-3"
+                   style="color:#059669;font-size:.9rem;"></i>
+                How are your service charges structured?
+              </button>
+            </h2>
+            <div id="faq4" class="accordion-collapse collapse"
+                 data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Our fees are transparent and based on the complexity and volume of your filings.
+                We offer flexible monthly retainer packages for ongoing GST and accounting services,
+                as well as one-time fees for registrations and annual returns. Contact us for a free
+                consultation and customised quote tailored to your needs.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button"
+                      data-bs-toggle="collapse" data-bs-target="#faq5">
+                <i class="fa-solid fa-globe me-3"
+                   style="color:var(--gold);font-size:.9rem;"></i>
+                Do you serve clients outside Kunnamkulam?
+              </button>
+            </h2>
+            <div id="faq5" class="accordion-collapse collapse"
+                 data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Absolutely. While we are based in Kunnamkulam, Kerala, we serve clients across
+                Kerala and all over India. Our digital-first approach means you can share documents
+                and receive updates online — making location no barrier to quality consulting.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CONTACT SECTION
+============================================================ -->
+<section id="contact" class="py-5">
+  <div class="container">
+
+    <!-- Heading -->
+    <div class="text-center mb-5">
+      <span class="section-label">Get In Touch</span>
+      <h2 class="section-title">Let's Talk About Your Business</h2>
+      <p class="section-sub mx-auto mt-2" style="max-width:600px;">
+        Reach out for a free consultation. We'll help you understand your tax obligations
+        and the best path forward.
+      </p>
+    </div>
+
+    <div class="row g-4 align-items-stretch">
+
+      <!-- LEFT SIDE -->
+      <div class="col-lg-5">
+        <div class="p-4 h-100" style="background:#fff;border-radius:16px;border:1px solid #eee;box-shadow:0 10px 30px rgba(0,0,0,0.05);">
+
+          <h5 class="mb-4 fw-bold">Contact Information</h5>
+
+          <!-- Item -->
+          <div class="d-flex mb-4">
+            <div class="me-3 p-3 rounded-circle" style="background:#FFEAEA;color:#E11D48;">
+              <i class="fa-solid fa-phone-volume"></i>
+            </div>
+            <div>
+              <h6 class="mb-1">Phone / WhatsApp</h6>
+              <p class="mb-0 text-muted">+91 90485 84886</p>
+            </div>
+          </div>
+
+          <div class="d-flex mb-4">
+            <div class="me-3 p-3 rounded-circle" style="background:#F5F5F4;">
+              <i class="fa-solid fa-envelope"></i>
+            </div>
+            <div>
+              <h6 class="mb-1">Email</h6>
+              <p class="mb-0 text-muted">ksvassociates2020@gmail.com</p>
+            </div>
+          </div>
+
+          <div class="d-flex mb-4">
+            <div class="me-3 p-3 rounded-circle" style="background:#FFF7E6;color:#D97706;">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div>
+              <h6 class="mb-1">Office</h6>
+              <p class="mb-0 text-muted">
+                Kunnamkulam, Thrissur<br/>Kerala – 680503
+              </p>
+            </div>
+          </div>
+
+          <div class="d-flex mb-4">
+            <div class="me-3 p-3 rounded-circle" style="background:#ECFDF5;color:#059669;">
+              <i class="fa-solid fa-clock"></i>
+            </div>
+            <div>
+              <h6 class="mb-1">Working Hours</h6>
+              <p class="mb-0 text-muted">
+                Mon – Sat: 9AM – 6PM<br/>Sunday: WhatsApp support
+              </p>
+            </div>
+          </div>
+
+          <!-- Map -->
+          <div style="border-radius:12px;overflow:hidden;">
+            <iframe
+              src="https://www.google.com/maps?q=KSV+Associates+Kerala&output=embed"
+              width="100%" height="200"
+              style="border:0;">
+            </iframe>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- RIGHT SIDE (FORM) -->
+      <div class="col-lg-7">
+        <div class="p-4 h-100" style="background:#fff;border-radius:16px;border:1px solid #eee;box-shadow:0 10px 30px rgba(0,0,0,0.05);">
+
+          <h5 class="fw-bold mb-4">Send Us a Message</h5>
+
+          <form id="contactForm">
+            <div class="row g-3">
+
+              <div class="col-md-6">
+                <input type="text" name="name" class="form-control" placeholder="Full Name *" required>
+              </div>
+
+              <div class="col-md-6">
+                <input type="tel" name="phone" class="form-control" placeholder="Phone Number">
+              </div>
+
+              <div class="col-md-6">
+                <input type="email" name="email" class="form-control" placeholder="Email Address *" required>
+              </div>
+
+              <div class="col-md-6">
+                <select name="service" class="form-select">
+                  <option value="">Select Service</option>
+                  <option>GST Filing</option>
+                  <option>Income Tax</option>
+                  <option>Accounting</option>
+                  <option>Business Registration</option>
+                  <option>TDS / TCS</option>
+                  <option>GST Audit</option>
+                </select>
+              </div>
+
+              <div class="col-12">
+                <textarea name="message" class="form-control" rows="5" placeholder="Your message..." required></textarea>
+              </div>
+
+              <div class="col-12">
+                <button type="submit" class="btn w-100" style="background:#E11D48;color:#fff;padding:12px;font-weight:600;border-radius:10px;">
+                  Send Message
+                </button>
+              </div>
+
+            </div>
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER  – dark charcoal with red social hover
+============================================================ -->
+<footer>
+  <div class="container">
+    <div class="row g-4">
+
+      <!-- Brand column -->
+      <div class="col-lg-4 col-md-6">
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <div class="brand-icon">
+            <i class="fa-solid fa-scale-balanced" style="color:var(--red-dk);"></i>
+          </div>
+          <div>
+            <span class="brand-name">KSV Associates</span>
+            <span class="brand-tagline">GST &amp; Tax Consulting</span>
+          </div>
+        </div>
+        <p class="footer-desc">
+          Your trusted financial partner in Kunnamkulam, Kerala. We simplify GST,
+          income tax, and business compliance — so you can focus on growing your business.
+        </p>
+        <div class="mt-3 d-flex gap-2">
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-lg-2 col-md-3 col-sm-6">
+        <div class="footer-heading">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#blog">Insights</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Services list -->
+      <div class="col-lg-3 col-md-3 col-sm-6">
+        <div class="footer-heading">Our Services</div>
+        <ul class="footer-links">
+          <li><a href="#services">GST Filing &amp; Returns</a></li>
+          <li><a href="#services">Income Tax Services</a></li>
+          <li><a href="#services">Accounting &amp; Bookkeeping</a></li>
+          <li><a href="#services">Business Registration</a></li>
+          <li><a href="#services">TDS / TCS Compliance</a></li>
+          <li><a href="#services">GST Audit Support</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact mini -->
+      <div class="col-lg-3 col-md-6">
+        <div class="footer-heading">Contact Us</div>
+        <ul class="footer-links">
+          <li>
+            <a href="tel:+919876543210">
+              <i class="fa-solid fa-phone me-2"
+                 style="color:var(--gold-lt);width:14px;"></i>+91 90485 84886
+            </a>
+          </li>
+          <li>
+            <a href="mailto:ksvassociates2020@gmail.com">
+              <i class="fa-solid fa-envelope me-2"
+                 style="color:var(--gold-lt);width:14px;"></i>ksvassociates2020@gmail.com
+            </a>
+          </li>
+          <li style="color:rgba(255,255,255,.62);font-size:.87rem;
+                     display:flex;gap:.5rem;align-items:flex-start;">
+            <i class="fa-solid fa-location-dot mt-1"
+               style="color:var(--gold-lt);width:14px;flex-shrink:0;"></i>
+            <span>Kunnamkulam, Thrissur District, Kerala – 680503</span>
+          </li>
+        </ul>
+        <div class="mt-3 p-3"
+             style="background:rgba(185,28,28,.2);border-radius:10px;
+                    border:1px solid rgba(185,28,28,.35);">
+          <div style="font-size:.7rem;color:var(--gold-lt);font-weight:700;
+                      letter-spacing:.08em;text-transform:uppercase;margin-bottom:.3rem;">
+            Business Hours
+          </div>
+          <div style="font-size:.83rem;color:rgba(255,255,255,.62);">
+            Mon – Sat: 9 AM – 6 PM
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom">
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <p>© 2024 KSV Associates. All rights reserved. | Kunnamkulam, Kerala, India</p>
+        <div class="d-flex gap-3">
+          <a href="#" style="font-size:.76rem;color:rgba(255,255,255,.35);text-decoration:none;">Privacy Policy</a>
+          <a href="#" style="font-size:.76rem;color:rgba(255,255,255,.35);text-decoration:none;">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to top button -->
+<a href="#hero" id="backTop" title="Back to top">
+  <i class="fa-solid fa-chevron-up"></i>
+</a>
+
+
+<!-- Bootstrap 5 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  /* Navbar scroll shadow */
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  /* Back-to-top visibility */
+  const backTop = document.getElementById('backTop');
+  window.addEventListener('scroll', () => {
+    backTop.classList.toggle('show', window.scrollY > 400);
+  });
+
+  /* Active nav link on scroll */
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 110) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.remove('active');
+      if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+    });
+  });
+
+  /* Contact form submit animation */
+  document.getElementById('submitBtn').addEventListener('click', function () {
+    const btn = this;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i>Sending…';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.innerHTML = '<i class="fa-solid fa-circle-check me-2"></i>Message Sent! We\'ll be in touch soon.';
+      btn.style.background = 'linear-gradient(135deg,#059669,#047857)';
+    }, 1800);
+  });
+</script>
+<script>
+const scriptURL = "https://script.google.com/macros/s/AKfycbz2LBZ2SNHlumaV19KfBrpc0KzzsC9Ux28JbK1SALMAvGj0NvYm7iiQDvsfae4mayUrHg/exec";
+const form = document.getElementById("contactForm");
+
+form.addEventListener("submit", e => {
+  e.preventDefault();
+
+  const formData = {
+    name: form.name.value,
+    phone: form.phone.value,
+    email: form.email.value,
+    service: form.service.value,
+    message: form.message.value
+  };
+
+  fetch(scriptURL, {
+    method: "POST",
+    body: JSON.stringify(formData)
+  })
+  .then(res => res.json())
+  .then(data => {
+    alert("Message sent successfully!");
+    form.reset();
+  })
+  .catch(err => {
+    alert("Error! Try again.");
+  });
+});
+</script>
+
+</body>
+</html>
