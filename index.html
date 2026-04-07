@@ -203,11 +203,31 @@
        ABOUT
     ============================================================ */
     #about { padding:6rem 0; background:var(--off-white); }
-    .about-img-wrap { position:relative; border-radius:var(--radius); overflow:hidden; }
-    .about-img-wrap img {
-      width:100%; height:730px; object-fit:cover;
-      border-radius:var(--radius); display:block;
-    }
+    .about-img-wrap {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.about-img-wrap img {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: var(--radius);
+  display: block;
+}
+
+/* 📱 Tablet & Mobile */
+@media (max-width: 992px) {
+  .about-img-wrap {
+    aspect-ratio: 1 / 1; /* 👈 makes container square */
+  }
+
+  .about-img-wrap img {
+    height: 100%; /* fill the square */
+  }
+}
     .about-img-badge {
       position:absolute; bottom:1.5rem; left:1.5rem;
       background:var(--red-md); color:#fff;
@@ -473,7 +493,7 @@
 </head>
 <body>
     <!-- WhatsApp Floating Button -->
-<a href="https://wa.me/919048584814" 
+<a href="https://wa.me/919048584886" 
    class="whatsapp-float" 
    target="_blank">
   💬
